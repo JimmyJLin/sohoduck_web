@@ -37,6 +37,28 @@ app.use(logger('dev'));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
+
+// Home
 app.get('/', function(req, res){
   res.render('pages/index')
+})
+
+// Directions
+app.get('/directions', function(req, res){
+  res.render('pages/directions')
+})
+
+// Restaurants/Bars
+app.get('/restaurants', function(req, res){
+  res.render('pages/restaurants')
+})
+
+// Shopping
+app.get('/shoppings', function(req, res){
+  res.render('pages/shoppings')
+})
+
+// POIs
+app.get('/pois', function(req, res){
+  res.render('pages/pois')
 })

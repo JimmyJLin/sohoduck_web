@@ -1,5 +1,41 @@
 <div class="mainNavBar">
 
-  <h3>Nav Bar</h3>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
 
+        <li role="presentation"><a href="/directions">Directions</a></li>
+
+        <li role="presentation" ><a href="/restaurants">Resturants-Bars</a></li>
+
+        <li role="presentation" ><a href="/shoppings">Shopping</a></li>
+
+        <li role="presentation" ><a href="/pois">POIs</a></li>
+
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Dropdown <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li role="presentation" ><a href="#">Link 1</a></li>
+            <li role="presentation" ><a href="#">Link 2</a></li>
+            <li role="presentation" ><a href="#">Link 3</a></li>
+
+          </ul>
+
+        </li>
+
+        <button id="login" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target=".bd-example-modal-sm">
+          <span href="/login" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+            Sign in
+        </button>
+
+
+
+      </ul>
+
+    </div>
+
+  </nav>
 </div>
