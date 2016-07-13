@@ -1,0 +1,70 @@
+$main_color: black;
+
+@mixin border-radius($radius){
+  -webkit-webkit-border-radius: $radius;
+  -moz-webkit-border-radius: $radius;
+  -ms-webkit-border-radius: $radius;
+  -o-webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+#body{
+  margin-top: 50px;
+
+  h3{
+    margin:0 auto;
+    background-color: $main_color;
+    z-index:0;
+    text-align:center;
+    font-size:5em;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color:#0080FF;
+    opacity:0.7;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Mobile & Tablet @media imports
+
+// iPhone 4
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  @import "mobile_4";
+}
+
+// iPhone 5 & 5S
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  @import "mobile_5";
+}
+
+// iPhone 6 & 6S
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  @import "mobile_6";
+}
+
+// iPhone 6plus
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+  @import "mobile_6plus";
+}
+
+// Tablets
+@media only screen and (min-device-width: 736px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  @import "tablet";
+}
