@@ -61,15 +61,19 @@ function initMap(){
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
 
-  const control = document.getElementById('floating-panel');
-  control.style.display = 'block';
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+  // const control = document.getElementById('floating-panel');
+  // control.style.display = 'block';
+  // map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 
   const onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
   };
+
   document.getElementById('start').addEventListener('change', onChangeHandler);
   document.getElementById('end').addEventListener('change', onChangeHandler);
+  document.getElementById('submit').addEventListener('click', function() {
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  });
 
   let locations = [
       {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
@@ -146,17 +150,57 @@ function populateInfoWindow(marker, infowindow) {
 
 }
 
-// This function to calculate and display route
+// This function to calculate and display route between 2 points
+// function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+//   let start = document.getElementById('start').value;
+//   let end = document.getElementById('end').value;
+//   directionsService.route({
+//     origin: start,
+//     destination: end,
+//     travelMode: google.maps.TravelMode.WALKING
+//   }, function(response, status) {
+//     if (status === google.maps.DirectionsStatus.OK) {
+//       directionsDisplay.setDirections(response);
+//     } else {
+//       window.alert('Directions request failed due to ' + status);
+//     }
+//   });
+// }
+
+// This function to calculae and display route between multiple waypoints
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  let start = document.getElementById('start').value;
-  let end = document.getElementById('end').value;
+  var waypts = [];
+  var checkboxArray = document.getElementById('waypoints');
+  for (var i = 0; i < checkboxArray.length; i++) {
+    if (checkboxArray.options[i].selected) {
+      waypts.push({
+        location: checkboxArray[i].value,
+        stopover: true
+      });
+    }
+  }
+
   directionsService.route({
-    origin: start,
-    destination: end,
+    origin: document.getElementById('start').value,
+    destination: document.getElementById('end').value,
+    waypoints: waypts,
+    optimizeWaypoints: true,
     travelMode: google.maps.TravelMode.WALKING
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
+      var route = response.routes[0];
+      var summaryPanel = document.getElementById('directions-panel');
+      summaryPanel.innerHTML = '';
+      // For each route, display summary information.
+      for (var i = 0; i < route.legs.length; i++) {
+        var routeSegment = i + 1;
+        summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+            '</b><br>';
+        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+      }
     } else {
       window.alert('Directions request failed due to ' + status);
     }
