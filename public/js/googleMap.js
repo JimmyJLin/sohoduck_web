@@ -45,6 +45,10 @@ const styles = [
     ]
 
 function initMap(){
+
+  let directionsService = new google.maps.DirectionsService;
+  let directionsDisplay = new google.maps.DirectionsRenderer;
+
   // Constructor creates a new map - only center and zoom are required.
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.7413549, lng: -73.9980244},
@@ -52,6 +56,20 @@ function initMap(){
     styles: styles,
     mapTypeControl: true
   })
+
+  // initiaze the directionDisplay
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById('right-panel'));
+
+  const control = document.getElementById('floating-panel');
+  control.style.display = 'block';
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
+  const onChangeHandler = function() {
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  };
+  document.getElementById('start').addEventListener('change', onChangeHandler);
+  document.getElementById('end').addEventListener('change', onChangeHandler);
 
   let locations = [
       {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
@@ -96,7 +114,6 @@ function initMap(){
       marker.setMap(map);
     }
 
-
 }
 
 
@@ -112,6 +129,7 @@ function makeMarkerIcon(markerColor) {
     new google.maps.Size(21, 34))
   return markerImage
 }
+
 // This function populate the infowindow when the marker is clicked. We'll only allow
 // one infowindow which will open at the marker that is clicked, and populate based on the markers position
 function populateInfoWindow(marker, infowindow) {
@@ -125,4 +143,22 @@ function populateInfoWindow(marker, infowindow) {
       infowindow.setMarker(null);
     })
   }
+
+}
+
+// This function to calculate and display route
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  let start = document.getElementById('start').value;
+  let end = document.getElementById('end').value;
+  directionsService.route({
+    origin: start,
+    destination: end,
+    travelMode: google.maps.TravelMode.WALKING
+  }, function(response, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
 }
