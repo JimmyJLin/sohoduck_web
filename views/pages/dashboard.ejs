@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Head partial -->
+  <%- include ../partials/head %>
+
+</head>
+<body>
+
+  <!-- Header Nav Bar -->
+  <div id="navbar">
+    <!-- Navbar partial -->
+    <%- include ../partials/dashboard_navbar %>
+
+  </div>
+  <!-- Header Nav Bar Ends -->
+
+
+  <!-- Dashboard -->
+  <div id="dashboard">
+
+    <h3>Dashboard!!</h3>
+
+    <div id="addBusinessForm">
+      <%- include ../partials/dashboard/addBusiness %>
+    </div>
+
+    <div id="businessListView">
+      <%- include ../partials/dashboard/businessListview %>
+
+    </div>
+
+  </div>
+  <!-- Dashboard End-->
+
+
+</body>
+</html>

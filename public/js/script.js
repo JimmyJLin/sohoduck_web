@@ -6,13 +6,21 @@ $(function(){
     $('#myInput').focus()
   })
 
+  $('[data-toggle="offcanvas"]').click(function(){
+    $("#navigation").toggleClass("hidden-xs");
+  });
+
+  /* Login starts */
   $('#loginSubmit').click(function(){
     const userName = $('#userName').val();
     const userPassword = $('#userPassword').val();
 
     toggleSignIn();
-    $('#loginButton').hide()
-    $('#logoutButton').show()
+    checkLoginStatus();
+    // $('#loginButton').hide()
+    // $('#logoutButton').show()
+    //
+    // window.location.href = "/dashboard"
 
     $('#myModal').modal('toggle');
     return false;
@@ -23,12 +31,28 @@ $(function(){
   $('#logoutButton').click(function(){
 
     toggleSignOut();
+    checkLoginStatus();
 
-    $('#logoutButton').hide()
-    $('#loginButton').show()
+    // $('#loginButton').show()
+    // $('#logoutButton').hide()
+    // window.location.href = "/"
 
   })
 
+  // Confirm signed or signedout
+  function checkLoginStatus(){
+    const user = firebase.auth().currentUser;
+
+    if (user) {
+      $('#loginButton').hide()
+      $('#logoutButton').show()
+      window.location.href = "/dashboard"
+    } else {
+      $('#loginButton').show()
+      $('#logoutButton').hide()
+      window.location.href = "/"
+    }
+  }
 
   // fire base SignIn
   function toggleSignIn(){
@@ -69,6 +93,7 @@ $(function(){
   function toggleSignOut(){
     firebase.auth().signOut()
   }
+  /* Login ends */
 
 
 })

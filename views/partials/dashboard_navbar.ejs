@@ -1,0 +1,49 @@
+<div class="mainNavBar">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+
+        <li role="presentation"><a href="/addbusiness">Add POI</a></li>
+
+        <li role="presentation" ><a href="/businesslistview">Business Data</a></li>
+
+        <li role="presentation" ><a href="/shoppings">Shopping</a></li>
+
+        <li role="presentation" ><a href="/pois">POIs</a></li>
+
+
+        <div id="loginandoutContainer">
+          <button id="loginButton" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target=".bd-example-modal-sm">
+            <span id="login" href="/login" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+              Sign in
+          </button>
+
+          <button id="logoutButton" type="button" class="btn btn-default navbar-btn navbar-right">
+            <span id="login" href="/login" class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+              Sign out
+          </button>
+        </div>
+
+
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+
+        <%- include ../partials/login %>
+
+      </div>
+    </div>
+  </div>
+  <!-- Modal ends -->
+
+</div>
