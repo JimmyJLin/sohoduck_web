@@ -26,10 +26,17 @@
 
         </li>
 
-        <button id="login" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target=".bd-example-modal-sm">
-          <span href="/login" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-            Sign in
-        </button>
+        <div id="loginandoutContainer">
+          <button id="loginButton" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target=".bd-example-modal-sm">
+            <span id="login" href="/login" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+              Sign in
+          </button>
+
+          <button id="logoutButton" type="button" class="btn btn-default navbar-btn navbar-right">
+            <span id="login" href="/login" class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+              Sign out
+          </button>
+        </div>
 
 
 
@@ -38,4 +45,17 @@
     </div>
 
   </nav>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+
+        <%- include ../partials/login %>
+
+      </div>
+    </div>
+  </div>
+  <!-- Modal ends -->
+
 </div>

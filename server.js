@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
+const firebase = require('firebase');
 
 /* app setting */
 const port = process.env.PORT || 3000;
