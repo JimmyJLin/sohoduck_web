@@ -3,7 +3,7 @@
 <head>
 
   <!-- Head partial -->
-  <%- include ../partials/head %>
+  <%- include ../../partials/head %>
 
 </head>
 <body>
@@ -11,7 +11,7 @@
   <!-- Header Nav Bar -->
   <div id="navbar">
     <!-- Navbar partial -->
-    <%- include ../partials/dashboard/dashboard_navbar %>
+    <%- include ../../partials/dashboard/dashboard_navbar %>
 
   </div>
   <!-- Header Nav Bar Ends -->
@@ -19,8 +19,12 @@
   <!-- Dashboard -->
   <div id="dashboard" class="col-sm9 col-md-10 main">
 
-    <h3>Dashboard!!</h3>
+    <h3>POI List View!!</h3>
 
+    <div id="businessListView">
+      <%- include ../../partials/dashboard/businessListViewTable %>
+
+    </div>
 
   </div>
   <!-- Dashboard End-->

@@ -5,23 +5,19 @@
       <ul class="nav nav-pills">
         <li role="presentation" class="active"><a href="/">Home</a></li>
 
-        <li role="presentation"><a href="/addbusiness">Add POI</a></li>
+        <li role="presentation"><a href="/addbusiness">Add POIs</a></li>
 
-        <li role="presentation" ><a href="/businesslistview">Business Data</a></li>
-
-        <li role="presentation" ><a href="/shoppings">Shopping</a></li>
-
-        <li role="presentation" ><a href="/pois">POIs</a></li>
+        <li role="presentation" ><a href="/businesslistview">View POIs</a></li>
 
 
         <div id="loginandoutContainer">
           <button id="loginButton" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target=".bd-example-modal-sm">
-            <span id="login" href="/login" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+            <span id="login" class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
               Sign in
           </button>
 
           <button id="logoutButton" type="button" class="btn btn-default navbar-btn navbar-right">
-            <span id="login" href="/login" class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+            <span id="login" class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
               Sign out
           </button>
         </div>
@@ -39,7 +35,7 @@
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
-        <%- include ../partials/login %>
+        <%- include ../../partials/login %>
 
       </div>
     </div>

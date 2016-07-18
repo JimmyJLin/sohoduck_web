@@ -64,10 +64,6 @@ app.get('/pois', function(req, res){
   res.render('pages/pois')
 })
 
-// Dashboard
-app.get('/newdashboard', function(req, res){
-  res.render('pages/newDashboard')
-})
 
 app.get('/dashboard', function(req, res){
   res.render('pages/dashboard')
@@ -81,5 +77,12 @@ app.get('/dashboard', function(req, res){
   //
   // })
 
+})
 
+app.get('/addbusiness', function(req, res){
+  res.render('pages/dashboard/addBusiness')
+})
+
+app.get('/businesslistview', function(req, res){
+  res.render('pages/dashboard/businessListView')
 })
