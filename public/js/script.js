@@ -6,21 +6,14 @@ $(function(){
     $('#myInput').focus()
   })
 
-  $('[data-toggle="offcanvas"]').click(function(){
-    $("#navigation").toggleClass("hidden-xs");
-  });
-
-  /* Login starts */
   $('#loginSubmit').click(function(){
     const userName = $('#userName').val();
     const userPassword = $('#userPassword').val();
 
     toggleSignIn();
-    // checkLoginStatus();
+
     $('#loginButton').hide()
     $('#logoutButton').show()
-
-    window.location.href = "/dashboard"
 
     $('#myModal').modal('toggle');
     return false;
@@ -31,27 +24,31 @@ $(function(){
   $('#logoutButton').click(function(){
 
     toggleSignOut();
-    // checkLoginStatus();
 
-    $('#loginButton').show()
-    $('#logoutButton').hide()
     window.location.href = "/"
 
   })
 
-  // Confirm signed or signedout
-  function checkLoginStatus(){
-    const user = firebase.auth().currentUser;
+  // validate login
+  function validateLogin(){
 
+    const user = firebase.auth().currentUser;
     if (user) {
       $('#loginButton').hide()
       $('#logoutButton').show()
-      window.location.href = "/dashboard"
+
+      setInterval(function(){
+        window.location.href = "/dashboard"
+      }, 500)
+
     } else {
       $('#loginButton').show()
       $('#logoutButton').hide()
-      window.location.href = "/"
+      setInterval(function(){
+        window.location.href = "/"
+      }, 500)
     }
+
   }
 
   // fire base SignIn
@@ -61,6 +58,7 @@ $(function(){
     } else {
       const email = $('#userName').val();
       const password = $('#userPassword').val();
+
       if(email.length < 2) {
         alert('Please enter an email address.');
         return;
@@ -78,22 +76,51 @@ $(function(){
         if(errorCode === 'auth/wrong-password') {
           alert('Wrong password');
         } else {
-          console.log("error from here")
           alert(errorMessage);
         }
         console.log(error);
         console.log("Did NOT Logined")
       });
+
     }
     console.log("Logined")
-
+    setInterval(function(){
+      window.location.href = "/dashboard"
+    }, 500)
+    // validateToken()
   }
 
   // fire base Logout
   function toggleSignOut(){
     firebase.auth().signOut()
-  }
-  /* Login ends */
 
+  }
+
+  function validateToken(){
+    const token = firebase.auth().currentUser.getToken(true).then(function(token){
+      var uid = token.sub;
+      console.log('uid', uid)
+    })
+
+    console.log(token)
+    //
+    // firebase.auth().vertifyIdToken(idToken).then(function(decodedToken){
+    //   var uid = decodedToken.sub;
+    //   console.log(uid)
+    // }).catch(function(error){
+    //   console.log("unable to retrieve uid")
+    // })
+
+
+    // firebase.auth().currentUser.getToken(true).then(function(idToken){
+    //
+    //   console.log(idToken)
+    //
+    // }).catch(function(error){
+    //   console.log("Error in retrieving token")
+    // })
+
+
+  }
 
 })
