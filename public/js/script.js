@@ -16,11 +16,11 @@ $(function(){
     const userPassword = $('#userPassword').val();
 
     toggleSignIn();
-    checkLoginStatus();
-    // $('#loginButton').hide()
-    // $('#logoutButton').show()
-    //
-    // window.location.href = "/dashboard"
+    // checkLoginStatus();
+    $('#loginButton').hide()
+    $('#logoutButton').show()
+
+    window.location.href = "/dashboard"
 
     $('#myModal').modal('toggle');
     return false;
@@ -31,11 +31,11 @@ $(function(){
   $('#logoutButton').click(function(){
 
     toggleSignOut();
-    checkLoginStatus();
+    // checkLoginStatus();
 
-    // $('#loginButton').show()
-    // $('#logoutButton').hide()
-    // window.location.href = "/"
+    $('#loginButton').show()
+    $('#logoutButton').hide()
+    window.location.href = "/"
 
   })
 
@@ -61,7 +61,6 @@ $(function(){
     } else {
       const email = $('#userName').val();
       const password = $('#userPassword').val();
-
       if(email.length < 2) {
         alert('Please enter an email address.');
         return;
@@ -79,6 +78,7 @@ $(function(){
         if(errorCode === 'auth/wrong-password') {
           alert('Wrong password');
         } else {
+          console.log("error from here")
           alert(errorMessage);
         }
         console.log(error);

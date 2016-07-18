@@ -68,15 +68,6 @@ app.get('/pois', function(req, res){
 app.get('/dashboard', function(req, res){
   res.render('pages/dashboard')
 
-  // firebase.auth().onAuthStateChanged(function(user){
-  //   if (user) {
-  //     res.render('pages/dashboard')
-  //   } else {
-  //     res.render('pages/index')
-  //   }
-  //
-  // })
-
 })
 
 app.get('/addbusiness', function(req, res){
